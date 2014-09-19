@@ -1,0 +1,8 @@
+{
+	"name": "spark",
+	"targetType": "executable",
+	"dependencies": {
+		"derelict-sdl2": { "version": "~master" },
+        "gl3n": { "version": "~master" }
+	}
+}
