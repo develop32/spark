@@ -2,9 +2,12 @@ module engine.state;
 
 import engine.math;
 import engine.world;
+import engine.component;
 
 struct States
 {
+	mixin ComponentManager!(Vector2, "position");
+
 	private size_t[Entity] _id;
 	private Entity[size_t] _entity;
 	private Vector2[] _positions;
