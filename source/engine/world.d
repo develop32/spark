@@ -62,13 +62,14 @@ struct World
         return world;
     }
 
-    T* register(T)()
+    T* register(T)(T instance)
     {
         static assert(isComponentManager);
 
         enum ti = typeid(T);
         assert(ti !in _data.managers);
         auto inst = new T;
+        *inst = instance;
         _data.managers[ti] = inst;
 
         static if (isUpdateableComponentManager!T)
