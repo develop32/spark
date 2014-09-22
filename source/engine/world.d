@@ -64,11 +64,11 @@ struct World
 
     T* register(T)(T instance)
     {
-        static assert(isComponentManager);
+        static assert(isComponentManager!T);
 
         enum ti = typeid(T);
         assert(ti !in _data.managers);
-        auto inst = new T;
+        auto inst = (T*)GC.malloc(T.sizeof);
         *inst = instance;
         _data.managers[ti] = inst;
 
